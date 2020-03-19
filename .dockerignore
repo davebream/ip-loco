@@ -1,0 +1,10 @@
+.git
+.gitignore
+.env
+
+/.bundle
+/log/*
+/tmp/*
+.byebug_history
+/config/master.key
+.vscode
