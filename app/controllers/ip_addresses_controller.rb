@@ -9,6 +9,15 @@ class IpAddressesController < ApplicationController
     render json: { error: e.message }, status: :unprocessable_entity
   end
 
+  def destroy
+    ip_address.destroy
+    render json: {}, status: :ok
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "No record found for #{params[:address]} address." }, status: :not_found
+  rescue IpAddressValidator::AddressInvalid => e
+    render json: { error: e.message }, status: :unprocessable_entity
+  end
+
   private
 
   def ip_address
