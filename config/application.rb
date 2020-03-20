@@ -17,6 +17,8 @@ require "action_view/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
+require_relative '../lib/db_connection_check_middleware'
+
 Bundler.require(*Rails.groups)
 
 module Myapp
@@ -34,5 +36,6 @@ module Myapp
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.eager_load_paths << Rails.root.join('lib')
+    config.middleware.insert_before 0, DBConnectionCheckMiddleware
   end
 end
