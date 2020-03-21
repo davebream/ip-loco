@@ -11,6 +11,7 @@ class IpAddressesController < ApplicationController
 
   def destroy
     ip_address.destroy
+
     render json: {}, status: :ok
   rescue ActiveRecord::RecordNotFound
     render json: { error: "No record found for #{params[:address]} address." }, status: :not_found
@@ -18,10 +19,22 @@ class IpAddressesController < ApplicationController
     render json: { error: e.message }, status: :unprocessable_entity
   end
 
+  def create
+    CreateIpAddress.new.(address_param)
+
+    render json: {}, status: :ok
+  rescue IpAddressValidator::AddressInvalid => e
+    render json: { error: e.message }, status: :unprocessable_entity
+  rescue Ipstack::Client::ConntectionFailure, Ipstack::Client::ConnectionTimeout => e
+    render json: { error: e.message }, status: :service_unavailable
+  rescue StandardError => e
+    render json: { error: e.message }, status: :internal_server_error
+  end
+
   private
 
   def ip_address
-    @ip_address ||= IpAddress.by_address(address_param).first!
+    @ip_address ||= IpAddressesQuery.new.find_by_address!(address_param)
   end
 
   def address_param
