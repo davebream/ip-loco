@@ -8,8 +8,8 @@ default: &default
 
 development:
   <<: *default
-  database: myapp_development
+  database: loco_ip_api_development
 
 test:
   <<: *default
-  database: myapp_test
+  database: loco_ip_api_test
