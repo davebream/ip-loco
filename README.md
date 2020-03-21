@@ -1,24 +1,25 @@
-# README
+# LOCO IP API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple RESTful api for managin
 
-Things you may want to cover:
+## Setup with Docker
 
-* Ruby version
+### Build the application
 
-* System dependencies
+    docker-compose build
 
-* Configuration
+### Setup & seed DB
 
-* Database creation
+    docker-compose run web rails db:setup
 
-* Database initialization
+### Create `.env` file with
 
-* How to run the test suite
+    IPSTACK_ACCESS_KEY=your-ipstack-key
 
-* Services (job queues, cache servers, search engines, etc.)
+### Start development server
 
-* Deployment instructions
+    docker-compose up
 
-* ...
+### Run tests
+
+    docker-compose run web bundle exec rspec
