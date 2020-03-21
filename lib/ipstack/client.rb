@@ -29,7 +29,6 @@ module Ipstack
       return @response_body unless @response_body['success'] == false
 
       raise_api_error
-
     rescue SocketError
       raise ConntectionFailure, 'The ipstack api is not responding or no internet connection'
     rescue Net::OpenTimeout, Net::ReadTimeout

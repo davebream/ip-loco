@@ -18,10 +18,18 @@ class IpAddressValidator
   end
 
   def input_valid_url?
-    @input =~ URI::regexp && !(URI.parse(@input) rescue nil).nil? && @result = URI.parse(@input).host
+    @input =~ URI::DEFAULT_PARSER.make_regexp && !(begin
+                                 URI.parse(@input)
+                                                   rescue StandardError
+                                                     nil
+                               end).nil? && @result = URI.parse(@input).host
   end
 
   def input_valid_ip?
-    !(IPAddr.new(@input) rescue nil).nil? && @result = @input
+    (begin
+        IPAddr.new(@input)
+     rescue StandardError
+       nil
+      end).present? && @result = @input
   end
 end

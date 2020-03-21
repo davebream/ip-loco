@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class IpAddressMemberConstraint
-  PATH_REGEX = /\/ip_addresses\/(?<address>.+)/i.freeze
+  PATH_REGEX = %r{/ip_addresses/(?<address>.+)}i.freeze
 
   def matches?(request)
     match = PATH_REGEX.match(request.env['REQUEST_URI'])

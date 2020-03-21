@@ -20,7 +20,7 @@ class IpAddressesController < ApplicationController
   end
 
   def create
-    CreateIpAddress.new.(address_param)
+    CreateIpAddress.new.call(address_param)
 
     render json: {}, status: :ok
   rescue IpAddressValidator::AddressInvalid => e
@@ -38,6 +38,6 @@ class IpAddressesController < ApplicationController
   end
 
   def address_param
-    @address_param ||= IpAddressValidator.new.(params[:address])
+    @address_param ||= IpAddressValidator.new.call(params[:address])
   end
 end

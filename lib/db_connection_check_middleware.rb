@@ -14,10 +14,16 @@ class DBConnectionCheckMiddleware
   private
 
   def error_json
-    [503, { 'Content-Type' => 'application/json' }, [ { error: 'Could not connect to the DB' }.to_json ]]
+    [
+      503,
+      { 'Content-Type' => 'application/json' },
+      [{ error: 'Could not connect to the DB' }.to_json]
+    ]
   end
 
   def database_connected?
-    ActiveRecord::Base.connection_pool.with_connection { |con| con.active? } rescue false
+    ActiveRecord::Base.connection_pool.with_connection(&:active?)
+  rescue StandardError
+    false
   end
 end
