@@ -1,0 +1,17 @@
+AllCops:
+  Exclude:
+    - "**/config.ru"
+    - "**/Rakefile"
+    - "bin/**/*"
+    - "db/**/*"
+    - "config/**/*"
+    - "spec/**/*"
+    - "vendor/**/*"
+Documentation:
+  Enabled: false
+Metrics/LineLength:
+  Max: 100
+Metrics/MethodLength:
+  Max: 20
+Bundler/OrderedGems:
+  Enabled: false
