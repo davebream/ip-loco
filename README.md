@@ -1,6 +1,6 @@
 # LOCO IP API
 
-A simple RESTful api for managin
+A simple RESTful api for managing ip addresses with geolocation data
 
 ## Setup with Docker
 
