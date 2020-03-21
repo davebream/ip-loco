@@ -1,5 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  get '/*path', to: 'ip_addresses#show', constraints: IpAddressMemberConstraint.new, format: false
-  delete '/*path', to: 'ip_addresses#destroy', constraints: IpAddressMemberConstraint.new, format: false
-  put '/*path', to: 'ip_addresses#create', constraints: IpAddressMemberConstraint.new, format: false
+  constraints IpAddressMemberConstraint.new do
+    defaults format: false do
+      get '/*path', to: 'ip_addresses#show'
+      delete '/*path', to: 'ip_addresses#destroy'
+      put '/*path', to: 'ip_addresses#create'
+    end
+  end
 end
