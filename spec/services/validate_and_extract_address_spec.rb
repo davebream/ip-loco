@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe IpAddressValidator do
+describe ValidateAndExtractAddress do
   describe '.call' do
     let(:result) { described_class.new.call(input) }
 
@@ -32,7 +32,7 @@ describe IpAddressValidator do
       let(:input) { 'http:/google.com/some-path?param=1' }
 
       it 'raises error' do
-        expect { result }.to raise_error(IpAddressValidator::AddressInvalid, 'http:/google.com/some-path?param=1 is not a valid IPv4, IPv6 or url')
+        expect { result }.to raise_error(ValidateAndExtractAddress::AddressInvalid, 'http:/google.com/some-path?param=1 is not a valid IPv4, IPv6 or url')
       end
     end
 
@@ -40,7 +40,7 @@ describe IpAddressValidator do
       let(:input) { '1.160.10.240.' }
 
       it 'raises error' do
-        expect { result }.to raise_error(IpAddressValidator::AddressInvalid, '1.160.10.240. is not a valid IPv4, IPv6 or url')
+        expect { result }.to raise_error(ValidateAndExtractAddress::AddressInvalid, '1.160.10.240. is not a valid IPv4, IPv6 or url')
       end
     end
 
@@ -48,7 +48,7 @@ describe IpAddressValidator do
       let(:input) { '3ffe:1900:4545:3:200:f8ff:fe21:67cf:' }
 
       it 'raises error' do
-        expect { result }.to raise_error(IpAddressValidator::AddressInvalid, '3ffe:1900:4545:3:200:f8ff:fe21:67cf: is not a valid IPv4, IPv6 or url')
+        expect { result }.to raise_error(ValidateAndExtractAddress::AddressInvalid, '3ffe:1900:4545:3:200:f8ff:fe21:67cf: is not a valid IPv4, IPv6 or url')
       end
     end
   end
