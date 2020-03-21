@@ -61,7 +61,7 @@ describe 'IpAddresses API' do
       it 'renders error' do
         request
         json = JSON.parse(response.body)
-        expect(json).to eq({ 'error' => 'No record found for http://unknown-ip-address.com address.' })
+        expect(json).to eq({ 'error' => 'Could not find record' })
       end
 
       it 'has 404 http status' do
@@ -121,7 +121,7 @@ describe 'IpAddresses API' do
       it 'renders error' do
         request
         json = JSON.parse(response.body)
-        expect(json).to eq({ 'error' => 'No record found for http://unknown-ip-address.com address.' })
+        expect(json).to eq({ 'error' => 'Could not find record' })
       end
 
       it 'has 404 http status' do
@@ -238,12 +238,12 @@ describe 'IpAddresses API' do
 
       it 'renders error' do
         request
-        expect(JSON.parse(response.body)).to eq({ 'error' => 'The ipstack api is not responding or no internet connection' })
+        expect(JSON.parse(response.body)).to eq({ 'error' => 'External API error' })
       end
 
-      it 'has 503 http status' do
+      it 'has 502 http status' do
         request
-        expect(response).to have_http_status(503)
+        expect(response).to have_http_status(502)
       end
     end
 
@@ -258,12 +258,12 @@ describe 'IpAddresses API' do
 
       it 'renders error' do
         request
-        expect(JSON.parse(response.body)).to eq({ 'error' => 'Ipstack: Acces key invalid. [code: 101, type: invalid_access_key]' })
+        expect(JSON.parse(response.body)).to eq({ 'error' => 'External API error' })
       end
 
-      it 'has 500 http status' do
+      it 'has 502 http status' do
         request
-        expect(response).to have_http_status(500)
+        expect(response).to have_http_status(502)
       end
     end
   end
