@@ -4,6 +4,10 @@ A simple RESTful api for managing ip addresses with geolocation data
 
 ## Setup with Docker
 
+### Create `.env` file with
+
+    IPSTACK_ACCESS_KEY=your-ipstack-key
+
 ### Build the application
 
     docker-compose build
@@ -11,10 +15,6 @@ A simple RESTful api for managing ip addresses with geolocation data
 ### Setup & seed DB
 
     docker-compose run web rails db:setup
-
-### Create `.env` file with
-
-    IPSTACK_ACCESS_KEY=your-ipstack-key
 
 ### Start development server
 
