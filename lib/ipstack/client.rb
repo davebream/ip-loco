@@ -30,9 +30,9 @@ module Ipstack
 
       raise_api_error
     rescue SocketError
-      raise ConntectionFailure, 'The ipstack api is not responding or no internet connection'
+      raise ConntectionFailure, 'The ipstack API is not responding or no internet connection'
     rescue Net::OpenTimeout, Net::ReadTimeout
-      raise ConnectionTimeout, 'The ipstack api request timed out'
+      raise ConnectionTimeout, 'The ipstack API request timed out'
     end
 
     def raise_api_error
