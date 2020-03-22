@@ -1,7 +1,7 @@
 # IP Loco 🌐
 
-![CI](https://github.com/davebream/ip-loco/workflows/CI/badge.svg)
-![codecov](https://codecov.io/gh/davebream/ip-loco/branch/master/graph/badge.svg)
+[![CI](https://github.com/davebream/ip-loco/workflows/CI/badge.svg)](https://github.com/davebream/ip-loco/actions?query=workflow%3ACI+branch%3Amaster)
+[![codecov](https://codecov.io/gh/davebream/ip-loco/branch/master/graph/badge.svg)](https://codecov.io/gh/davebream/ip-loco/branch/master)
 
 A simple RESTful JSON API for managing IP/url addresses & their geolocation data
 
