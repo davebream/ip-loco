@@ -20,25 +20,25 @@ A simple RESTful JSON API for managing IP/url addresses & their geolocation data
 
     docker-compose build
 
-### Setup & seed DB
+### Setup & seed the DB
 
     docker-compose run web rails db:setup
 
-### Start development server
+### Start the development server
 
     docker-compose up
 
-### Run tests
+### Run specs
 
     docker-compose run web bundle exec rspec
 
 ## Endpoints
 
-| Endpoint                        | Description                                                             |
-| ------------------------------- | ----------------------------------------------------------------------- |
-| `GET /ip_addresses/:address`    | Retrieve record by the given address                                    |
-| `DELETE /ip_addresses/:address` | Delete record with the given address                                    |
-| `PUT /ip_addresses/:address`    | Create or update record with new geolocation data for the given address |
+| Endpoint                        | Description                                                        |
+| ------------------------------- | ------------------------------------------------------------------ |
+| `GET /ip_addresses/:address`    | Retrieve a record                                                  |
+| `DELETE /ip_addresses/:address` | Delete a record                                                    |
+| `PUT /ip_addresses/:address`    | Create or update a record with new geolocation data (from ipstack) |
 
 `:address` has to be a valid IPv4/IPv6 IP or url
 
