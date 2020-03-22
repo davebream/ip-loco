@@ -20,6 +20,8 @@ end
 group :test do
   gem 'webmock'
   gem 'vcr'
+  gem 'simplecov', require: false
+  gem 'codecov', require: false
 end
 
 group :development do
