@@ -3,6 +3,8 @@
 class ValidateAndExtractAddress
   AddressInvalid = Class.new(StandardError)
 
+  INPUT_TYPES = { url: 'url', ip: 'ip' }.freeze
+
   def call(input)
     @input = input
 
@@ -15,9 +17,9 @@ class ValidateAndExtractAddress
 
   def establish_input_type
     @input_type = if input_valid_ip?
-                    :ip
+                    INPUT_TYPES[:ip]
                   elsif input_valid_url?
-                    :url
+                    INPUT_TYPES[:url]
                   end
   end
 
@@ -43,9 +45,9 @@ class ValidateAndExtractAddress
 
   def result
     case @input_type
-    when :ip
+    when INPUT_TYPES[:ip]
       @input
-    when :url
+    when INPUT_TYPES[:url]
       input_url_host
     end
   end
