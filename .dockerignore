@@ -8,3 +8,4 @@
 .byebug_history
 /config/master.key
 .vscode
+/coverage/
