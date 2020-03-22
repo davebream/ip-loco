@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/ip_loco
     docker:
-      - image: circleci/ruby:2.7.0-jessie
+      - image: circleci/ruby:2.7.0
         environment:
           RAILS_ENV: test
       - image: postgres:9.6.9
