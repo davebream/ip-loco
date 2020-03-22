@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-ruby@v1.0.0
         env:
           RAILS_ENV: test
-          PGHOST: "db"
+          PGHOST: localhost
         with:
           version: 2.7.0
 
@@ -35,7 +35,7 @@ jobs:
       - name: Bundle Install and Create DB
         env:
           RAILS_ENV: test
-          PGHOST: "db"
+          PGHOST: localhost
         run: |
           sudo apt-get -yqq install libpq-dev
           gem install bundler
@@ -45,5 +45,5 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
-          PGHOST: "db"
+          PGHOST: localhost
         run: bundle exec rspec
