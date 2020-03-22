@@ -47,3 +47,5 @@ jobs:
           RAILS_ENV: test
           PGHOST: localhost
         run: bundle exec rspec
+
+      - uses: codecov/codecov-action@v1
