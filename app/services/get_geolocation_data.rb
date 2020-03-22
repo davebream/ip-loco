@@ -7,7 +7,17 @@ class GetGeolocationData
 
   def call(input)
     @client.standard(input)
-  rescue Ipstack::Client::ConntectionFailure, Ipstack::Client::ConnectionTimeout, Ipstack::Client::ApiError => e
+  rescue *client_errors => e
     raise Errors::ExternalAPIError, e.message
+  end
+
+  private
+
+  def client_errors
+    [
+      Ipstack::Client::ConntectionFailure,
+      Ipstack::Client::ConnectionTimeout,
+      Ipstack::Client::ApiError
+    ]
   end
 end
