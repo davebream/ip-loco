@@ -1,13 +1,13 @@
 # IP Loco
 
-A simple RESTful JSON API for managing ip/url addresses & their geolocation data
+A simple RESTful JSON API for managing IP/url addresses & their geolocation data
 
 ## Setup with Docker
 
 ### Clone the repo
 
     git clone git@github.com:davebream/ip-loco.git
-    cd loco-ip-api
+    cd ip-loco
 
 ### Prepare `.env` file
 
@@ -39,9 +39,9 @@ A simple RESTful JSON API for managing ip/url addresses & their geolocation data
 
 `:address` has to be a valid IPv4/IPv6 IP or url
 
-## Seed data
+## Initial data
 
-The db is seeded with some urls/ips:
+Seeds include the following IPs/urls:
 
 - http://airbnb.com
 - http://medium.com
