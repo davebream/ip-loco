@@ -1,4 +1,4 @@
-# IP Loco
+# IP Loco 🌐
 
 A simple RESTful JSON API for managing IP/url addresses & their geolocation data
 
