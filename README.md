@@ -1,5 +1,7 @@
 # IP Loco 🌐
 
+![CI](https://github.com/davebream/ip-loco/workflows/CI/badge.svg)
+
 A simple RESTful JSON API for managing IP/url addresses & their geolocation data
 
 ## Setup with Docker
