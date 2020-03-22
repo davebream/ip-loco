@@ -3,60 +3,60 @@
 class ValidateAndExtractAddress
   AddressInvalid = Class.new(StandardError)
 
-  INPUT_TYPES = { url: 'url', ip: 'ip' }.freeze
+  ADDRESS_TYPES = { url: 'url', ip: 'ip' }.freeze
 
-  def call(input)
-    @input = input
+  def call(address)
+    @address = address
 
-    establish_input_type
-    raise_invalid unless @input_type.present?
+    establish_address_type
+    raise_invalid unless @address_type.present?
     result
   end
 
   private
 
-  def establish_input_type
-    @input_type = if input_valid_ip?
-                    INPUT_TYPES[:ip]
-                  elsif input_valid_url?
-                    INPUT_TYPES[:url]
-                  end
+  def establish_address_type
+    @address_type = if valid_ip?
+                      ADDRESS_TYPES[:ip]
+                    elsif valid_url?
+                      ADDRESS_TYPES[:url]
+                    end
   end
 
-  def input_valid_ip?
-    IPAddr.new(@input)
+  def valid_ip?
+    IPAddr.new(@address)
   rescue StandardError
     false
   end
 
-  def input_valid_url?
-    input_matches_url_regexp? && input_url_parsable?
+  def valid_url?
+    matches_url_regexp? && url_parsable?
   end
 
-  def input_matches_url_regexp?
-    @input =~ URI::DEFAULT_PARSER.make_regexp
+  def matches_url_regexp?
+    @address =~ URI::DEFAULT_PARSER.make_regexp
   end
 
-  def input_url_parsable?
-    input_url_host.present?
+  def url_parsable?
+    address_url_host.present?
   rescue URI::InvalidURIError
     false
   end
 
   def result
-    case @input_type
-    when INPUT_TYPES[:ip]
-      @input
-    when INPUT_TYPES[:url]
-      input_url_host
+    case @address_type
+    when ADDRESS_TYPES[:ip]
+      @address
+    when ADDRESS_TYPES[:url]
+      address_url_host
     end
   end
 
-  def input_url_host
-    URI.parse(@input).host
+  def address_url_host
+    URI.parse(@address).host
   end
 
   def raise_invalid
-    raise AddressInvalid, "#{@input} is not a valid IPv4, IPv6 or url"
+    raise AddressInvalid, "#{@address} is not a valid IPv4, IPv6 or url"
   end
 end
