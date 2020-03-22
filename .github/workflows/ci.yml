@@ -45,7 +45,7 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
+          CI: true
           PGHOST: localhost
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: bundle exec rspec
-
-      - uses: codecov/codecov-action@v1
